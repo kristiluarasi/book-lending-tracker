@@ -1,1 +1,42 @@
-
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Keep track of books you lend, their borrowers, and due dates.">
+  <title>Book Lending Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="lib-container" data-book-tracker>
+    <header class="lib-header">
+      <div><p class="lib-eyebrow">YOUR PERSONAL LIBRARY</p><h1>Good books.<br>In good hands.</h1><p class="lib-muted">Keep track of what you lend, who has it, and when it comes home.</p></div>
+      <span class="lib-emblem" aria-hidden="true">B<span> / </span>L</span>
+    </header>
+    <section class="lib-stats" aria-label="Loan summary" aria-live="polite">
+      <article class="lib-card"><p class="lib-muted">Total loans</p><strong class="lib-number" data-total>0</strong><small>All recorded loans</small></article>
+      <article class="lib-card"><p class="lib-muted">Currently lent</p><strong class="lib-number" data-active>0</strong><small>Books out in the world</small></article>
+      <article class="lib-card lib-warning"><p class="lib-muted">Overdue loans</p><strong class="lib-number" data-overdue>0</strong><small>Ready for a gentle reminder</small></article>
+    </section>
+    <section class="lib-card">
+      <p class="lib-eyebrow">01 / LEND A BOOK</p><h2>A new chapter to share</h2>
+      <form class="lib-form" data-loan-form>
+        <label class="lib-field">Title<input name="title" required maxlength="200" placeholder="e.g. The Great Gatsby"></label>
+        <label class="lib-field">Author<input name="author" required maxlength="160" placeholder="e.g. F. Scott Fitzgerald"></label>
+        <label class="lib-field">Borrower<input name="borrower" required maxlength="160" placeholder="Who are you lending to?"></label>
+        <label class="lib-field">Due date<input name="dueDate" type="date" required></label>
+        <label class="lib-field">Genre<select name="genre" required><option value="Fiction">Fiction</option><option value="Science">Science</option><option value="History">History</option><option value="Technology">Technology</option></select></label>
+        <button class="lib-button" type="submit">+ Add loan</button>
+      </form>
+      <p class="lib-notice" data-message role="status"></p>
+    </section>
+    <section class="lib-card">
+      <div class="lib-section-heading"><div><p class="lib-eyebrow">02 / YOUR LOANS</p><h2>The lending shelf</h2></div><label class="lib-field">Search loans<input type="search" data-search placeholder="Title, author, or borrower"></label></div>
+      <div class="lib-table-wrap"><table class="lib-table"><caption class="lib-sr-only">Recorded book loans</caption><thead><tr><th scope="col">Title</th><th scope="col">Author</th><th scope="col">Borrower</th><th scope="col">Due date</th><th scope="col">Genre</th><th scope="col">Status</th><th scope="col">Action</th></tr></thead><tbody data-loans></tbody></table></div>
+      <p class="lib-empty" data-empty>No loans yet. Share a book to start your lending shelf.</p>
+    </section>
+    <footer class="lib-footer">A little more sharing. A little less forgetting.<br><small>Loans are saved in this browser on this device.</small></footer>
+  </main>
+</body>
+</html>
